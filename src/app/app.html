@@ -1,1 +1,37 @@
-<router-outlet></router-outlet>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/template" (click)="drawer.close()" routerLinkActive="active-tab">Template</a>
+      <a mat-list-item routerLink="/reactive" (click)="drawer.close()" routerLinkActive="active-tab">Reactive</a>
+      <a mat-list-item routerLink="/custom" (click)="drawer.close()" routerLinkActive="active-tab">Custom</a>
+      <a mat-list-item routerLink="/register" (click)="drawer.close()" routerLinkActive="active-tab">Register</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar class="navbar">
+      @if (isHandset$ | async) {
+        <button mat-icon-button (click)="drawer.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+      }
+      <span class="logo">FINALS LAB</span>
+      @if (!(isHandset$ | async)) {
+        <div class="desktop-menu">
+          <a class="nav-link" routerLink="/template" routerLinkActive="active-tab">Template</a>
+          <a class="nav-link" routerLink="/reactive" routerLinkActive="active-tab">Reactive</a>
+          <a class="nav-link" routerLink="/custom" routerLinkActive="active-tab">Custom</a>
+          <a class="nav-link" routerLink="/register" routerLinkActive="active-tab">Register</a>
+        </div>
+      }
+    </mat-toolbar>
+
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

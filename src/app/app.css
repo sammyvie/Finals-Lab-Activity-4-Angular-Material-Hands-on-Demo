@@ -1,0 +1,54 @@
+.sidenav-container {
+  height: 100vh;
+}
+
+.navbar {
+  background-color: #ffffff;
+  border-bottom: 2px solid #fce4ec; /* Pink border */
+  color: #ad1457; /* Deep pink text */
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.logo {
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.desktop-menu {
+  display: flex;
+  gap: 15px;
+}
+
+.nav-link {
+  color: #ad1457 !important;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  padding: 10px 15px;
+  border-radius: 12px;
+  transition: 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: #fff8fa;
+}
+
+/* Style for the current active page */
+.active-tab {
+  background-color: #fce4ec !important;
+  color: #880e4f !important;
+}
+
+.sidenav {
+  width: 240px;
+  background-color: #fff8fa;
+}
+
+.main-content {
+  padding: 20px;
+  background-color: #fff8fa;
+  min-height: calc(100vh - 64px);
+}

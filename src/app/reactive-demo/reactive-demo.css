@@ -1,0 +1,148 @@
+:host {
+  display: block;
+}
+
+/* Background & Centering */
+.main-wrapper {
+  background-color: #fff0f3;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+/* The Pink Card */
+.form-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 480px;
+  padding: 2.5rem;
+  border-radius: 24px;
+  border: 1px solid #f8bbd0;
+  box-shadow: 0 15px 35px rgba(244, 194, 194, 0.4);
+}
+
+.title {
+  color: #ad1457;
+  font-weight: 800;
+  text-align: center;
+}
+
+.title-underline {
+  width: 50px;
+  height: 4px;
+  background-color: #f4c2c2;
+  margin: 0 auto 20px auto;
+  border-radius: 2px;
+}
+
+label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #880e4f;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #fce4ec;
+  border-radius: 12px;
+  background-color: #ffffff;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #f06292;
+  box-shadow: 0 0 0 4px rgba(240, 98, 146, 0.1);
+}
+
+.radio-container {
+  display: flex;
+  gap: 20px;
+  padding: 12px;
+  background-color: #fff8fa;
+  border-radius: 12px;
+  border: 1px dashed #f8bbd0;
+}
+
+.radio-item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.radio-item input {
+  width: auto;
+  margin-right: 8px;
+  accent-color: #f06292;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 14px;
+  background-color: #f4c2c2;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-submit:hover:not(:disabled) {
+  background-color: #f06292;
+  transform: translateY(-2px);
+}
+
+.btn-submit:disabled {
+  background-color: #fce4ec;
+  color: #ad1457;
+  cursor: not-allowed;
+}
+
+/* Print/Output Box Style */
+.result-box {
+  background-color: #fce4ec;
+  padding: 20px;
+  border-radius: 15px;
+  color: #880e4f;
+  border: 1px solid #f8bbd0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.error {
+  color: #e91e63;
+  font-size: 0.7rem;
+  margin-top: 4px;
+  display: block;
+}
+
+.animate-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* Styling for the error messages below inputs */
+.error-msg {
+  color: #ff4d4d; /* Bright red like the screenshot */
+  font-size: 0.75rem;
+  margin-top: 5px;
+  display: block;
+  font-style: italic;
+}
+
+/* Ensure invalid inputs get a slight red border when touched */
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched {
+  border-color: #ff4d4d;
+}

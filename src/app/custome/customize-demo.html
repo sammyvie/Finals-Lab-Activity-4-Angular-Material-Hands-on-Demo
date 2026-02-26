@@ -1,0 +1,92 @@
+<div class="request-wrapper d-flex align-items-center">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="glass-card shadow-lg">
+
+          <div class="progress custom-progress">
+            <div class="progress-bar" role="progressbar" [style.width.%]="step * 50"></div>
+          </div>
+
+          <div class="text-center mb-4">
+            <h2 class="fw-bold gradient-text">Project Request Wizard</h2>
+            <p class="text-muted small">Step {{ step }} of 2</p>
+          </div>
+
+          <form [formGroup]="customForm" (ngSubmit)="submitForm()">
+
+            <div *ngIf="step === 1" class="fade-slide">
+              <div class="row g-4">
+                <div class="col-md-6">
+                  <label class="form-label">Full Name</label>
+                  <div class="input-group custom-input">
+                    <span class="input-group-text">👤</span>
+                    <input type="text" formControlName="fullName" class="form-control" placeholder="John Doe">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Phone</label>
+                  <div class="input-group custom-input">
+                    <span class="input-group-text">📞</span>
+                    <input type="text" formControlName="phone" class="form-control" placeholder="09XXXXXXXXX">
+                  </div>
+                </div>
+                <div class="col-12">
+                  <label class="form-label">Project Description</label>
+                  <textarea class="form-control custom-textarea" rows="4" formControlName="description" placeholder="Describe your project..."></textarea>
+                </div>
+              </div>
+              <div class="text-end mt-4">
+                <button type="button" class="btn btn-next px-4" (click)="nextStep()" [disabled]="customForm.get('fullName')?.invalid || customForm.get('phone')?.invalid">
+                  Next →
+                </button>
+              </div>
+            </div>
+
+            <div *ngIf="step === 2" class="fade-slide">
+              <div class="mb-4">
+                <label class="form-label">Service Type (Required)</label>
+                <div class="service-options">
+                  <label class="service-card" [class.selected]="customForm.get('serviceType')?.value === 'Consultation'">
+                    <input type="radio" value="Consultation" formControlName="serviceType">
+                    <div>
+                      <h6>Consultation</h6>
+                      <small>Professional guidance session</small>
+                    </div>
+                  </label>
+                  <label class="service-card" [class.selected]="customForm.get('serviceType')?.value === 'Development'">
+                    <input type="radio" value="Development" formControlName="serviceType">
+                    <div>
+                      <h6>Development</h6>
+                      <small>Custom project build</small>
+                    </div>
+                  </label>
+                </div>
+
+                <label class="form-label mt-3">Priority</label>
+                <label class="service-card urgent-card" [class.selected]="customForm.get('priority')?.value === 'Urgent'">
+                  <input type="radio" value="Urgent" formControlName="priority">
+                  <div>
+                    <h6>Urgent Priority</h6>
+                    <small>Fast-track processing</small>
+                  </div>
+                </label>
+              </div>
+
+              <div class="d-flex justify-content-between mt-4">
+                <button type="button" class="btn btn-outline-light px-4" (click)="prevStep()">← Back</button>
+                <button type="submit" class="btn btn-submit px-4" [disabled]="customForm.invalid">Submit Request</button>
+              </div>
+            </div>
+          </form>
+
+          <div *ngIf="isSubmitted" class="success-box mt-4 text-center">
+            <h5>🎉 Request Sent Successfully!</h5>
+            <p class="small mb-0">We will contact {{ customForm.value.fullName }} soon.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

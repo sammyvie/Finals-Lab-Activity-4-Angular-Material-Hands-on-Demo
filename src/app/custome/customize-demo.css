@@ -1,0 +1,134 @@
+/* Background - Soft Pink Gradient */
+.request-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fff0f3 0%, #f8bbd0 100%);
+  padding: 60px 0;
+}
+
+/* Glass Card - White Translucent */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(15px);
+  border-radius: 24px;
+  padding: 40px;
+  color: #880e4f; /* Darker pink for text readability */
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 15px 35px rgba(244, 194, 194, 0.4);
+}
+
+/* Gradient Text - Pink to Rose Gold */
+.gradient-text {
+  background: linear-gradient(90deg, #ad1457, #f06292);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Progress Bar */
+.custom-progress {
+  height: 8px;
+  background: rgba(173, 20, 87, 0.1);
+  margin-bottom: 30px;
+  border-radius: 10px;
+}
+
+.progress-bar {
+  background: linear-gradient(90deg, #f06292, #ad1457);
+  transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Inputs & Textarea */
+.custom-input .form-control,
+.custom-input .input-group-text,
+.custom-textarea {
+  background: rgba(255, 255, 255, 0.8);
+  border: 2px solid #fce4ec;
+  color: #880e4f;
+  border-radius: 12px;
+}
+
+.custom-input .form-control:focus,
+.custom-textarea:focus {
+  background: #fff;
+  border-color: #f06292;
+  box-shadow: 0 0 0 4px rgba(240, 98, 146, 0.1);
+  color: #880e4f;
+}
+
+/* Service Cards (Step 2) */
+.service-options {
+  display: grid;
+  gap: 15px;
+}
+
+.service-card {
+  display: flex;
+  gap: 15px;
+  padding: 15px;
+  border-radius: 15px;
+  background: white;
+  border: 2px solid #fce4ec;
+  cursor: pointer;
+  transition: 0.3s;
+  color: #ad1457;
+}
+
+.service-card:hover {
+  transform: translateY(-3px);
+  border-color: #f06292;
+  background: #fff8fa;
+}
+
+/* Highlighting the selected radio card */
+.service-card:has(input:checked) {
+  background: #fce4ec;
+  border-color: #f06292;
+}
+
+.service-card input {
+  accent-color: #ad1457;
+}
+
+/* Buttons */
+.btn-next,
+.btn-submit {
+  background: linear-gradient(90deg, #f06292, #ad1457);
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 50px;
+  padding: 12px 30px;
+  transition: all 0.3s ease;
+}
+
+.btn-next:hover,
+.btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(173, 20, 87, 0.3);
+}
+
+.btn-next:disabled,
+.btn-submit:disabled {
+  background: #e1e1e1;
+  color: #9e9e9e;
+}
+
+/* Success Box */
+.success-box {
+  background: #fce4ec;
+  color: #ad1457;
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid #f8bbd0;
+  animation: fadeIn 0.4s ease;
+}
+
+/* Step Labels */
+.form-label {
+  color: #ad1457;
+  font-weight: 600;
+}
+
+.text-muted {
+  color: #ad1457 !important;
+  opacity: 0.7;
+}
