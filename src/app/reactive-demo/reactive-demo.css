@@ -104,7 +104,6 @@ input:focus, select:focus, textarea:focus {
   cursor: not-allowed;
 }
 
-/* Print/Output Box Style */
 .result-box {
   background-color: #fce4ec;
   padding: 20px;
@@ -131,10 +130,8 @@ input:focus, select:focus, textarea:focus {
   to { opacity: 1; transform: translateY(0); }
 }
 
-
-/* Styling for the error messages below inputs */
 .error-msg {
-  color: #ff4d4d; /* Bright red like the screenshot */
+  color: #ff4d4d; 
   font-size: 0.75rem;
   margin-top: 5px;
   display: block;
