@@ -3,14 +3,13 @@
     min-height: 100vh;
     padding: 40px 20px;
     transition: all 0.4s ease;
-    background-color: #f5f5f5; /* Light mode background */
+    background-color: #f5f5f5; 
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 /* --- DARK MODE OVERRIDES --- */
-/* Triggered by the [class.dark-mode] logic in your HTML */
 .dark-mode {
-    background-color: #121212 !important; /* Deep dark background */
+    background-color: #121212 !important; 
 }
 
 .dark-mode .custom-card {
@@ -19,12 +18,10 @@
     color: #ffffff !important;
 }
 
-/* Brighten headers for Dark Mode readability */
 .dark-mode h1 {
     color: #f06292 !important;
 }
 
-/* Fix for Material labels, input text, and icons in Dark Mode */
 .dark-mode ::ng-deep .mat-mdc-form-field-label,
 .dark-mode ::ng-deep .mat-mdc-select-value,
 .dark-mode ::ng-deep .mat-mdc-input-element,
@@ -34,12 +31,10 @@
     color: #ffffff !important;
 }
 
-/* Floating label color when active in Dark Mode */
 .dark-mode ::ng-deep .mdc-floating-label--float-above {
     color: #f06292 !important;
 }
 
-/* Slider and Slider Label in Dark Mode */
 .dark-mode .slider-label {
     color: #f06292 !important;
 }
@@ -61,7 +56,7 @@
 
 h1 {
     text-align: center;
-    color: #ad1457; /* Deep pink color */
+    color: #ad1457; 
     margin-top: 10px;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -99,7 +94,7 @@ mat-icon {
 button {
     display: block;
     width: 100%;
-    background-color: #ad1457 !important; /* Deep pink */
+    background-color: #ad1457 !important; 
     color: white !important;
     padding: 12px !important;
     border-radius: 12px !important;
@@ -108,7 +103,6 @@ button {
     cursor: pointer;
 }
 
-/* Styling for the disabled state when form is invalid */
 button:disabled {
     background-color: #cccccc !important;
     color: #666666 !important;
