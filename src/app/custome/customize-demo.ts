@@ -15,8 +15,6 @@ export class CustomizeDemo {
   isSubmitted: boolean = false;
 
   constructor(private fb: FormBuilder) {
-    // We remove the 'agree' validator because it's not in your HTML
-    // We ensure serviceType and priority are handled correctly
     this.customForm = this.fb.group({
       fullName: ['', Validators.required],
       phone: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
@@ -27,7 +25,6 @@ export class CustomizeDemo {
   }
 
   nextStep() {
-    // Only proceed to Step 2 if Step 1 fields are valid
     if (this.customForm.get('fullName')?.valid &&
         this.customForm.get('phone')?.valid) {
       this.step = 2;
@@ -43,7 +40,6 @@ export class CustomizeDemo {
       this.isSubmitted = true;
       console.log("Wizard Form Data:", this.customForm.value);
     } else {
-      // Log errors to console to see what is blocking submission
       console.error("Form is invalid:", this.customForm.errors);
       this.customForm.markAllAsTouched();
     }
