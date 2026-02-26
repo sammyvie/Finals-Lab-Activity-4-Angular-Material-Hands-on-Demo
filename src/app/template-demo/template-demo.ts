@@ -11,16 +11,16 @@ import { CommonModule } from '@angular/common';
 })
 export class TemplateDemo {
   title = 'Finals Lab Activity 1';
-  isSubmitted = false; // Tracks if the form was submitted
+  isSubmitted = false; 
 
   user = {
     username: '',
     email: '',
     password: '',
     role: '',
-    gender: '',    // Task: Added Field 1
-    status: '',    // Task: Added Field 2
-    comments: ''   // Task: Added Field 3
+    gender: '',   
+    status: '',   
+    comments: ''  
   };
 
   submittedUser = { ...this.user };
@@ -28,7 +28,7 @@ export class TemplateDemo {
   onSubmit(form: any) {
     if (form.valid) {
       this.isSubmitted = true;
-      this.submittedUser = { ...this.user }; // Capture current data
+      this.submittedUser = { ...this.user }; 
       console.log('Form Data:', this.submittedUser);
     }
   }
