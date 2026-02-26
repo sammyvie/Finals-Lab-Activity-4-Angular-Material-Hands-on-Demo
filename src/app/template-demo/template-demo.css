@@ -1,9 +1,7 @@
-/* Remove default body margin (important for perfect centering) */
 :host {
   display: block;
 }
 
-/* Page Background + Perfect Center */
 .main-wrapper {
   background-color: #fff0f3;
   min-height: 100vh;
