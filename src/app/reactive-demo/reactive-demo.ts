@@ -15,13 +15,11 @@ export class ReactiveDemo {
   isSubmitted = false;
 
   constructor(private fb: FormBuilder) {
-    // Initializing form controls with built-in validators
     this.userForm = this.fb.group({
       username: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9_]+$')]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       role: ['', Validators.required],
-      // Required extra fields for Act 2
       status: ['', Validators.required],
       gender: ['', Validators.required],
       comments: ['']
