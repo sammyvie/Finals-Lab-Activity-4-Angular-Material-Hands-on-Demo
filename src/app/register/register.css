@@ -1,29 +1,64 @@
-/* Styling for the overall page body */
-body {
-    background-color: #f5f5f5;
+/* --- GLOBAL THEME BASE --- */
+.theme-container {
+    min-height: 100vh;
+    padding: 40px 20px;
+    transition: all 0.4s ease;
+    background-color: #f5f5f5; /* Light mode background */
     font-family: Roboto, "Helvetica Neue", sans-serif;
-    margin: 0;
-    padding: 0;
 }
 
-/* The main container for your registration form */
+/* --- DARK MODE OVERRIDES --- */
+/* Triggered by the [class.dark-mode] logic in your HTML */
+.dark-mode {
+    background-color: #121212 !important; /* Deep dark background */
+}
+
+.dark-mode .custom-card {
+    background-color: #1e1e1e !important;
+    border-color: #444 !important;
+    color: #ffffff !important;
+}
+
+/* Brighten headers for Dark Mode readability */
+.dark-mode h1 {
+    color: #f06292 !important;
+}
+
+/* Fix for Material labels, input text, and icons in Dark Mode */
+.dark-mode ::ng-deep .mat-mdc-form-field-label,
+.dark-mode ::ng-deep .mat-mdc-select-value,
+.dark-mode ::ng-deep .mat-mdc-input-element,
+.dark-mode ::ng-deep .mat-datepicker-toggle,
+.dark-mode ::ng-deep .mat-mdc-select-arrow,
+.dark-mode ::ng-deep mat-icon {
+    color: #ffffff !important;
+}
+
+/* Floating label color when active in Dark Mode */
+.dark-mode ::ng-deep .mdc-floating-label--float-above {
+    color: #f06292 !important;
+}
+
+/* Slider and Slider Label in Dark Mode */
+.dark-mode .slider-label {
+    color: #f06292 !important;
+}
+
+/* --- GENERAL STYLING (LIGHT MODE DEFAULTS) --- */
 .registration-container {
-    padding: 20px;
     max-width: 500px;
-    margin: 40px auto;
+    margin: 0 auto;
 }
 
-/* NEW COMPONENT 1: MatCard Styling */
-/* This matches the pink border and shadow from your 'Customize' screenshot */
 .custom-card {
     background-color: #ffffff;
     border-radius: 12px;
-    border: 1px solid #fce4ec; /* Light pink border */
-    box-shadow: 0 4px 15px rgba(173, 20, 87, 0.1); /* Subtle pink shadow */
+    border: 1px solid #fce4ec;
+    box-shadow: 0 4px 15px rgba(173, 20, 87, 0.1);
     padding: 20px;
+    transition: background 0.3s ease;
 }
 
-/* Title styling to match the demo screenshot */
 h1 {
     text-align: center;
     color: #ad1457; /* Deep pink color */
@@ -32,20 +67,17 @@ h1 {
     letter-spacing: 1px;
 }
 
-/* Ensures Material form fields take up the full width of the card */
 mat-form-field {
     width: 100%;
     margin-bottom: 10px;
 }
 
-/* NEW COMPONENT 2: MatIcon Styling */
 mat-icon {
-    color: #ad1457; /* Matches the theme color */
+    color: #ad1457;
     margin-right: 8px;
 }
 
-/* Radio Group and Slider Labels */
-.radio-label, .slider-label {
+.slider-label {
     display: block;
     color: #ad1457;
     font-size: 14px;
@@ -53,45 +85,42 @@ mat-icon {
     font-weight: 700;
 }
 
-/* Radio button layout */
-.gender-radio-group {
+.toggle-box {
     display: flex;
-    flex-direction: row;
-    gap: 20px;
-    margin-top: 8px;
+    justify-content: flex-end;
+    margin-bottom: 15px;
 }
 
-/* Slider container */
-.slider-group {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin: 20px 0;
+.slider-box {
+    margin: 25px 0;
 }
 
-mat-slider {
-    width: 100%;
-}
-
-/* Submit Button styling */
+/* --- BUTTON STYLING --- */
 button {
     display: block;
     width: 100%;
-    background-color: #ad1457 !important; /* Deep pink from navbar */
+    background-color: #ad1457 !important; /* Deep pink */
     color: white !important;
     padding: 12px !important;
     border-radius: 12px !important;
     margin-top: 20px;
     font-weight: bold;
+    cursor: pointer;
 }
 
-/* Results Display section for @if (submitted) */
-.result-display {
+/* Styling for the disabled state when form is invalid */
+button:disabled {
+    background-color: #cccccc !important;
+    color: #666666 !important;
+    cursor: not-allowed;
+}
+
+/* Results Display section */
+.result-box {
     margin-top: 25px;
     padding: 15px;
-    background-color: #fff8fa; /* Very light pink background */
+    background-color: #fff8fa;
     border-radius: 8px;
     border-left: 5px solid #f06292;
     color: #880e4f;
-    line-height: 1.6;
 }

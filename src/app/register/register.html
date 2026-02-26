@@ -1,93 +1,85 @@
-<div class="registration-container">
-  <mat-card class="custom-card">
-    <mat-card-header>
-      <mat-card-title><h1>Finals Lab Activity 1</h1></mat-card-title>
-    </mat-card-header>
+<div [class.dark-mode]="isDarkMode" class="theme-container">
+  <div class="registration-container">
 
-    <mat-card-content>
-      <form [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
+    <div class="toggle-box">
+      <mat-slide-toggle (change)="toggleTheme()" color="warn">
+        {{ isDarkMode ? 'Dark Mode' : 'Light Mode' }}
+      </mat-slide-toggle>
+    </div>
 
-        <mat-form-field appearance="fill">
-          <mat-label>Username</mat-label>
-          <mat-icon matPrefix>person</mat-icon>
-          <input matInput placeholder="Enter username" formControlName="userName">
-        </mat-form-field>
+    <mat-card class="custom-card">
+      <mat-card-header>
+        <mat-card-title><h1>TECH ORG REGISTRATION</h1></mat-card-title>
+      </mat-card-header>
 
-        <mat-form-field appearance="fill">
-          <mat-label>Email</mat-label>
-          <mat-icon matPrefix>email</mat-icon>
-          <input matInput type="email" placeholder="Enter Email" formControlName="email">
-          @if (formdata.controls['email'].invalid && formdata.controls['email'].touched) {
-            <mat-error>Email is required and must be a valid email.</mat-error>
-          }
-        </mat-form-field>
+      <mat-card-content>
+        <form [formGroup]="formdata" (ngSubmit)="onClickSubmit()">
 
-        <mat-form-field appearance="fill">
-          <mat-label>Password</mat-label>
-          <mat-icon matPrefix>lock</mat-icon>
-          <input matInput type="password" placeholder="Enter password" formControlName="password">
-          @if (formdata.controls['password'].invalid && formdata.controls['password'].touched) {
-            <mat-error>Password is required and must be at least 8 characters long.</mat-error>
-          }
-        </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Username</mat-label>
+            <mat-icon matPrefix>person</mat-icon>
+            <input matInput formControlName="userName">
+          </mat-form-field>
 
-        <mat-form-field appearance="fill">
-          <mat-label>Status</mat-label>
-          <mat-select formControlName="status">
-            <mat-option value="Active">Active</mat-option>
-            <mat-option value="Inactive">Inactive</mat-option>
-          </mat-select>
-        </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <mat-icon matPrefix>email</mat-icon>
+            <input matInput type="email" formControlName="email" placeholder="email@example.com">
+            @if (formdata.get('email')?.invalid && formdata.get('email')?.touched) {
+              <mat-error>Please enter a valid email.</mat-error>
+            }
+          </mat-form-field>
 
-        <div class="radio-group">
-          <label class="radio-label">Gender</label>
-          <mat-radio-group formControlName="gender" class="gender-radio-group">
-            <mat-radio-button value="male">Male</mat-radio-button>
-            <mat-radio-button value="female">Female</mat-radio-button>
-            <mat-radio-button value="other">Other</mat-radio-button>
-          </mat-radio-group>
-        </div>
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <mat-icon matPrefix>lock</mat-icon>
+            <input matInput type="password" formControlName="password">
+            @if (formdata.get('password')?.hasError('pattern')) {
+              <mat-error>Must start with a letter and be alphanumeric.</mat-error>
+            }
+          </mat-form-field>
 
-        <mat-form-field appearance="fill">
-          <mat-label>Address</mat-label>
-          <input matInput placeholder="Enter Address" formControlName="address">
-        </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Membership Status</mat-label>
+            <mat-select formControlName="status">
+              <mat-option value="Active Member">Active Member</mat-option>
+              <mat-option value="Inactive Member">Inactive Member</mat-option>
+            </mat-select>
+          </mat-form-field>
 
-        <mat-form-field appearance="fill">
-          <mat-label>Birth Date</mat-label>
-          <input matInput [matDatepicker]="picker" placeholder="Select a date" formControlName="birthDate">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-          @if (formdata.get('birthDate')?.hasError('required')) {
-            <mat-error>Birth date is required.</mat-error>
-          }
-        </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Birth Date</mat-label>
+            <input matInput [matDatepicker]="picker" [max]="maxDate" formControlName="birthDate">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            @if (formdata.get('birthDate')?.hasError('tooYoung')) {
+              <mat-error>Must be born in 2006 or earlier.</mat-error>
+            }
+          </mat-form-field>
 
-        <div class="slider-group">
-          <label class="slider-label">
-            Angular Skill Level: {{ formdata.get('angularSkillLevel')?.value }}
-          </label>
-          <mat-slider [min]="thisData.minSkillLevel" [max]="thisData.maxSkillLevel" [step]="1" [discrete]="true">
-            <input matSliderThumb formControlName="angularSkillLevel">
-          </mat-slider>
-        </div>
+          <div class="slider-box">
+            <label class="slider-label">Angular Skill Level: {{ formdata.get('angularSkillLevel')?.value }}</label>
+            <mat-slider min="1" max="10" step="1" discrete>
+              <input matSliderThumb formControlName="angularSkillLevel">
+            </mat-slider>
+          </div>
 
-        <button mat-raised-button color="primary" type="submit" [disabled]="!formdata.valid">
-          Click Here
-        </button>
+          <button mat-raised-button color="primary" type="submit" [disabled]="formdata.invalid">
+            Submit Registration
+          </button>
 
-        @if (thisData.submitted) {
-          <div class="result-display">
-            <p>
-              You have entered: <br>
-              Username: {{ thisData.userName }} <br>
-              Email: {{ thisData.email }} <br>
-              Status: {{ thisData.status }} <br>
-              Skill Level: {{ thisData.angularSkillLevel }}
-            </p>
+          <div style="margin-top: 10px; font-size: 10px; color: gray;">
+            Form Status: {{ formdata.status }}
+          </div>
+
+        </form>
+
+        @if (submittedData) {
+          <div class="result-box">
+            <p><strong>Success!</strong> Welcome, {{ submittedData.userName }}.</p>
           </div>
         }
-      </form>
-    </mat-card-content>
-  </mat-card>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>
