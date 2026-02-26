@@ -11,7 +11,7 @@
   backdrop-filter: blur(15px);
   border-radius: 24px;
   padding: 40px;
-  color: #880e4f; /* Darker pink for text readability */
+  color: #880e4f; 
   border: 1px solid rgba(255, 255, 255, 0.4);
   box-shadow: 0 15px 35px rgba(244, 194, 194, 0.4);
 }
@@ -78,7 +78,6 @@
   background: #fff8fa;
 }
 
-/* Highlighting the selected radio card */
 .service-card:has(input:checked) {
   background: #fce4ec;
   border-color: #f06292;
